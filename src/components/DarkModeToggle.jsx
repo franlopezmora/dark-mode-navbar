@@ -1,14 +1,26 @@
-'use client';
-import { useState, useEffect } from 'react';
-import { Sun, Moon } from 'lucide-react';
+'use client'
+import { useState, useEffect } from 'react'
+import { Sun, Moon } from 'lucide-react'
 
 export default function DarkModeToggle() {
-  const [dark, setDark] = useState(false);
-
+  // 1) Inicializo a partir de localStorage o pref. del SO:
+  const [dark, setDark] = useState(false)
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', dark);
-    console.log('dark mode:', dark, 'classes:', document.documentElement.classList);
-  }, [dark]);
+    // solo en cliente
+    const stored = localStorage.getItem('dark')
+    if (stored !== null) {
+      setDark(stored === 'true')
+    } else {
+      // si no hay en storage, uso preferencia del sistema
+      setDark(window.matchMedia('(prefers-color-scheme: dark)').matches)
+    }
+  }, [])
+
+  // 2) Cuando cambia, ajusto <html> y guardo
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', dark)
+    localStorage.setItem('dark', dark)
+  }, [dark])
 
   return (
     <button
@@ -45,5 +57,5 @@ export default function DarkModeToggle() {
         `}
       />
     </button>
-  );
+  )
 }

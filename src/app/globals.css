@@ -3,19 +3,48 @@
 /* trae el bundle completo de Tailwind (incluye dark:…) */
 @import "tailwindcss";
 
-/* variables mínimas para dark mode */
+/* 2️⃣ Variables globales para light / dark */
 :root {
+  /* fondo y texto */
   --bg: #f9fafb;
   --fg: #111827;
+  /* fondo de tarjetas */
+  --card-bg: #ffffff;
+  /* fondo y color de inputs */
+  --input-bg: #ffffff;
+  --input-color: #111827;
+  /* color de bordes */
+  --border: #e5e7eb;
 }
 html.dark {
   --bg: #111827;
   --fg: #f9fafb;
+  --card-bg: #1f2937;    /* gray-800 */
+  --input-bg: #374151;   /* gray-700 */
+  --input-color: #f9fafb;
+  --border: #374151;     /* gray-700 */
 }
 
+/* 3️⃣ Aplica las vars al <body> */
 body {
   background-color: var(--bg);
   color: var(--fg);
   transition: background-color .3s, color .3s;
   font-family: system-ui, sans-serif;
+}
+
+/* 4️⃣ Que `border` simple use nuestra var */
+@layer utilities {
+  .border {
+    border-color: var(--border) !important;
+  }
+}
+
+/* 5️⃣ Override de Chrome autofill en inputs */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--input-bg) inset !important;
+          box-shadow: 0 0 0px 1000px var(--input-bg) inset !important;
+  -webkit-text-fill-color: var(--input-color) !important;
 }

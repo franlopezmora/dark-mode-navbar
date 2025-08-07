@@ -1,3 +1,4 @@
+// src/components/NavWrapper.jsx
 'use client';
 
 import FloatingNav from './FloatingNav';
