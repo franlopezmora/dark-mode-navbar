@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Dark Mode Navbar (Next.js + Tailwind CSS)
 
-## Getting Started
+Navegación moderna con soporte de modo oscuro/claro, construida con Next.js (App Router) y Tailwind CSS. Incluye un `toggle` accesible para alternar el tema, una barra de navegación que se adapta al scroll, un contenedor de navegación flotante y una pantalla de login de ejemplo. El objetivo del proyecto es ofrecer una base lista para usar y extender en aplicaciones donde la experiencia visual y la UX sean prioridad.
 
-First, run the development server:
+### Características
+- Alternancia de tema oscuro/claro con persistencia del estado.
+- Componentes desacoplados: `DarkModeToggle`, `DarkNav`, `FloatingNav`, `NavWrapper` y `LoginForm`.
+- Diseño responsivo con Tailwind CSS.
+- App Router de Next.js y tipografía optimizada con `next/font`.
 
+### Tecnologías
+- **Framework**: Next.js 14 (App Router)
+- **UI**: React 18, Tailwind CSS
+- **Build/Dev**: Node.js 18+, npm
+
+### Requisitos
+- Node.js 18 o superior
+- npm 9 o superior
+
+### Instalación y ejecución
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+Abrir `http://localhost:3000` en el navegador.
+
+### Scripts
+- `npm run dev`: entorno de desarrollo
+- `npm run build`: build de producción
+- `npm run start`: servidor de producción
+- `npm run lint`: revisión de lint
+
+### Estructura principal
+```text
+src/
+  app/
+    layout.jsx
+    page.js
+    login/
+      page.jsx
+  components/
+    DarkModeToggle.jsx
+    DarkNav.jsx
+    FloatingNav.jsx
+    NavWrapper.jsx
+    LoginForm.jsx
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Personalización del tema
+La clase de tema se aplica en la raíz mediante `NavWrapper` y el `DarkModeToggle`. Ajusta colores y tokens en `tailwind.config.js` y estilos globales en `src/app/globals.css`.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Despliegue
+Compatible con Vercel. Ejecuta `npm run build` y sigue la guía de despliegue de Next.js.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Contribuciones
+Sugerencias y PRs son bienvenidos. Abre un issue para discutir cambios mayores.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Licencia
+Este proyecto no define una licencia explícita. Añade una si planeas distribuirlo.
